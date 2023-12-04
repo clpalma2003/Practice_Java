@@ -6,11 +6,11 @@ class BuildingHotels {
     static boolean maintenanceRequired = false;
 
     public static void main(String[] args) {
-        Hotel(7, 6);
-        Time();
+        printRoof(7, 6);
+        passTime();
     }
 
-    static void Time() {
+    static void passTime() {
         int hourPerDay = 24;
         int daysOfTheWeek = 7;
 
@@ -32,7 +32,7 @@ class BuildingHotels {
         System.out.println("Overall total electricity consumption: " + totalElectricityConsumption);
     }
 
-    public static int ProbabiltyOfEachWindow() {
+    public static int calculateProbabiltyOfEachWindow() {
         int MAXROWS = 7;
         int MAXCOLUMNS = 6;
         int electricityConsumption = 0;
@@ -43,12 +43,21 @@ class BuildingHotels {
         final String HITTHUNDER = "[X]::";
         final String FIXING = "[#]::";
 
-        for (int totalRows = 0; totalRows < MAXROWS; totalRows++) {
-            for (int totalColumns = 0; totalColumns < MAXCOLUMNS; totalColumns++) {
+        int columnAffectedByLightning = -1;
+        int rowUnderRepair = -1;
+
+        if (Math.random < 0.2) {
+            columnAffectedByLightning = (int)((Math.random() * MAXCOLUMNS) - 1)
+        }
+
+         if (Math.random < 0.05) {
+            rowUnderRepair = (int)((Math.random() * MAXROWS) - 1)
+        }
+        
+        for (int rows = 0; totalRows < MAXROWS; totalRows++) {
+            for (int columns = 0; totalColumns < MAXCOLUMNS; totalColumns++) {
                 boolean blindOpen = Math.random() < 0.6;
                 boolean lightOn = Math.random() < 0.7;
-                boolean thunder = Math.random() < 0.2;
-                boolean fixing = Math.random() < 0.05;
 
                 if (blindOpen) {
                     if (lightOn) {
@@ -61,13 +70,11 @@ class BuildingHotels {
                     System.out.print(CLOSEROOM);
                 }
 
-                if (thunder && !lightningStruck) {
+                if (columnAffectedByLightning != -1) {
                     System.out.print(HITTHUNDER);
-                    electricityConsumption++;
-                    lightningStruck = true;
-                } else if (fixing && !maintenanceRequired) {
+                }
+                if (rowUnderRepair != -1) {
                     System.out.print(FIXING);
-                    maintenanceRequired = true;
                 }
             }
 
@@ -78,7 +85,7 @@ class BuildingHotels {
         return electricityConsumption;
     }
 
-    static void Hotel(int maxRows, int maxColumns) {
+    static void printRoof(int maxRows, int maxColumns) {
         System.out.println("               __/\\__");
         System.out.println("  |    |    |  |####|  |    |    |  ");
         System.out.println("====================================");
