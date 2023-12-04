@@ -21,12 +21,12 @@ class BuildingHotels {
 
             for (int hour = 0; hour < hourPerDay; hour++) {
                 System.out.println("Day: " + day + " Hour: " + hour + "h");
-                Hotel(7, 6);
-                dailyElectricityConsumption += ProbabiltyOfEachWindow();
+                printRoof(7, 6);
+                dailyElectricityConsumption =  dailyElectricityConsumption + PrintHotel();
             }
 
             System.out.println("CONSUMOS: D" + day + ": " + dailyElectricityConsumption + " | ");
-            totalElectricityConsumption += dailyElectricityConsumption;
+            totalElectricityConsumption = totalElectricityConsumption + dailyElectricityConsumption;
         }
 
         System.out.println("Overall total electricity consumption: " + totalElectricityConsumption);
