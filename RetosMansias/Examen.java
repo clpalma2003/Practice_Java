@@ -7,10 +7,7 @@ class BuildingHotels {
 
     public static void main(String[] args) {
         printRoof(7, 6);
-        passTime();
-    }
-
-    static void passTime() {
+        
         int hourPerDay = 24;
         int daysOfTheWeek = 7;
 
