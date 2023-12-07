@@ -1,34 +1,35 @@
-class BuildingHotel {
+package RetosMansias;
+
+class BuildingHotels {
     static int totalElectricityConsumption = 0;
-    static boolean lightningStruck = false; // Variable to track if lightning has already struck
+    static boolean lightningStruck = false;
+    static boolean maintenanceRequired = false;
 
     public static void main(String[] args) {
-        Hotel(7, 6);
-        Time();
-    }
-
-    static void Time() {
+        printRoof(7, 6);
+        
         int hourPerDay = 24;
         int daysOfTheWeek = 7;
 
         for (int day = 1; day <= daysOfTheWeek; day++) {
             int dailyElectricityConsumption = 0;
-            lightningStruck = false; // Reset the lightning variable for a new day
+            lightningStruck = false;
+            maintenanceRequired = false;
 
             for (int hour = 0; hour < hourPerDay; hour++) {
                 System.out.println("Day: " + day + " Hour: " + hour + "h");
-                Hotel(hourPerDay, daysOfTheWeek);
-                dailyElectricityConsumption += ProbabiltyOfEachWindow();
+                printRoof(7, 6);
+                dailyElectricityConsumption =  dailyElectricityConsumption + PrintHotel();
             }
 
-            System.out.println("Total electricity consumption for Day " + day + ": " + dailyElectricityConsumption);
-            totalElectricityConsumption += dailyElectricityConsumption;
+            System.out.println("CONSUMOS: D" + day + ": " + dailyElectricityConsumption + " | ");
+            totalElectricityConsumption = totalElectricityConsumption + dailyElectricityConsumption;
         }
 
         System.out.println("Overall total electricity consumption: " + totalElectricityConsumption);
     }
 
-    public static int ProbabiltyOfEachWindow() {
+    public static int calculateProbabiltyOfEachWindow() {
         int MAXROWS = 7;
         int MAXCOLUMNS = 6;
         int electricityConsumption = 0;
@@ -38,14 +39,22 @@ class BuildingHotel {
         final String LIGHTOFF = "[º]::";
         final String HITTHUNDER = "[X]::";
         final String FIXING = "[#]::";
-        final String LIGHTNING = "[L]::";
 
-        for (int totalRows = 0; totalRows < MAXROWS; totalRows++) {
-            for (int totalColumns = 0; totalColumns < MAXCOLUMNS; totalColumns++) {
+        int columnAffectedByLightning = -1;
+        int rowUnderRepair = -1;
+
+        if (Math.random < 0.2) {
+            columnAffectedByLightning = (int)((Math.random() * MAXCOLUMNS) - 1)
+        }
+
+         if (Math.random < 0.05) {
+            rowUnderRepair = (int)((Math.random() * MAXROWS) - 1)
+        }
+        
+        for (int rows = 0; totalRows < MAXROWS; totalRows++) {
+            for (int columns = 0; totalColumns < MAXCOLUMNS; totalColumns++) {
                 boolean blindOpen = Math.random() < 0.6;
                 boolean lightOn = Math.random() < 0.7;
-                boolean thunder = Math.random() < 0.2;
-                boolean fixing = Math.random() < 0.05;
 
                 if (blindOpen) {
                     if (lightOn) {
@@ -58,26 +67,22 @@ class BuildingHotel {
                     System.out.print(CLOSEROOM);
                 }
 
-                if (thunder) {
+                if (columnAffectedByLightning != -1) {
                     System.out.print(HITTHUNDER);
-                    electricityConsumption++;
-                } else if (!lightningStruck && Math.random() < 0.2) {
-                    System.out.print(LIGHTNING);
-                    electricityConsumption++;
-                    lightningStruck = true; // Set the flag to true if lightning strikes
-                } else {
+                }
+                if (rowUnderRepair != -1) {
                     System.out.print(FIXING);
                 }
             }
+
             System.out.println("- P" + (totalRows + 1));
         }
-
         System.out.println("------------------------------------");
         System.out.println("Electricity consumption for the hour: " + electricityConsumption);
         return electricityConsumption;
     }
 
-    static void Hotel(int maxRows, int maxColumns) {
+    static void printRoof(int maxRows, int maxColumns) {
         System.out.println("               __/\\__");
         System.out.println("  |    |    |  |####|  |    |    |  ");
         System.out.println("====================================");
