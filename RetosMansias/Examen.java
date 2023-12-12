@@ -6,7 +6,7 @@ class BuildingHotels {
     static boolean maintenanceRequired = false;
 
     public static void main(String[] args) {
-        printRoof(7, 6);
+        printRoof();
         
         int hourPerDay = 24;
         int daysOfTheWeek = 7;
@@ -18,7 +18,6 @@ class BuildingHotels {
 
             for (int hour = 0; hour < hourPerDay; hour++) {
                 System.out.println("Day: " + day + " Hour: " + hour + "h");
-                printRoof(7, 6);
                 dailyElectricityConsumption =  dailyElectricityConsumption + PrintHotel();
             }
 
