@@ -45,7 +45,7 @@ class CalculatorWithArray {
 
 }
 
-//Retso del mundo
+//Reto aspiradora
 int[][] laOficina = {
     {0,0,0,0},
     {0,2,2,4}
@@ -54,8 +54,10 @@ int[][] laOficina = {
 }
 
     imprimeMundo(laOficina);
+    int posicionAspiradoraEnX = 0;
+    int posicionAspiradoraEnY = 0;
 
-    private static void imprimeMundo(int[][] mundo){
+    private static void imprimeMundo(int[][] mundo, xAspiradora, yAspiradora                                                                            ){
         cleanScreen();
         for(int fila = 0; fila < laOficina; fila++){
             for(int columna = 0; columna < mundo[fila].leght; columna++){
@@ -64,13 +66,6 @@ int[][] laOficina = {
         System.out.println();
     }
 }
-  private static String traduce(int i){
-        if(i==1) = "++";
-        if(i==2) = "---";
-        if(i==3) = "$$";
-
-        return"  ";
-    } 
 
   private static String muestraCasilla(int casilla){
         String[] casillas = {"**","//","00"};
