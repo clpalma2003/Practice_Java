@@ -14,11 +14,11 @@ class CalculatorWithArray {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Ingresar el tamaño del array:");
-        int lengthNumbers = scanner.nextInt();
+        int lengthOfArray = scanner.nextInt();
 
-        int[] newListArray = new int[lengthNumbers];
+        int[] newListArray = new int[lengthOfArray];
 
-        for (int i = 0; i < lengthNumbers; i++) {
+        for (int i = 0; i < lengthOfArray; i++) {
             System.out.print("Ingrese el número " + (i + 1) + ": ");
             newListArray[i] = scanner.nextInt();
 
@@ -45,7 +45,7 @@ class CalculatorWithArray {
 
 }
 
-
+//Retso del mundo
 int[][] laOficina = {
     {0,0,0,0},
     {0,2,2,4}
@@ -55,15 +55,15 @@ int[][] laOficina = {
 
     imprimeMundo(laOficina);
 
-    private static void imprimeMundo(int[][] Mundo){
+    private static void imprimeMundo(int[][] mundo){
         cleanScreen();
-        for(int fila = 0; fila < laOficina; fila++)
+        for(int fila = 0; fila < laOficina; fila++){
             for(int columna = 0; columna < mundo[fila].leght; columna++){
-                 System.out.println(traduce(muestraCasilla[fila][columna]))
+                 System.out.println(muestraCasilla(mundo[fila][columna]))
             }
         System.out.println();
     }
-
+}
   private static String traduce(int i){
         if(i==1) = "++";
         if(i==2) = "---";
