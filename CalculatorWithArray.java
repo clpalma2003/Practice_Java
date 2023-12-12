@@ -44,3 +44,17 @@ class CalculatorWithArray {
     }
 
 }
+
+
+int[][] unaMatriz = {
+    {0,0,0,0},
+    {0,1,2,3}
+}
+
+    private static void imprimeMatriz(int[][] unaMatriz){
+
+        for(int fila = 0; i < unaMatriz; i++)
+            for(int columna = 0; j < unaMatriz[i].leght; j++){
+                 System.out.println(unaMatriz[fila][columna])
+            }
+    }
