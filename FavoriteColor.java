@@ -1,36 +1,34 @@
-import java.util.Scanner;
+import java.util.Scanner; 
+import java.util.function.IntConsumer; 
+import java.util.stream.IntStream; 
 
-class FavoriteColor {
-
+public class AverageCalculator { 
+    interface NumberReader { 
+        int[] readNumbers(int count); 
+    } 
+    
+    interface NumberProcessor { 
+        double processNumbers(int[] numbers); 
+                              } 
+    interface NumberPrinter { 
+        void printNumber(double number); 
+    } 
+    
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-
-        String favoriteColor;
-        String tryTheUserDoes;
-        int MAXATTEMPTS = 3;
-
-        System.out.println("Introduce tu color favorito");
-        favoriteColor = scanner.nextLine();
-
-        System.out.println("Trata de adivinar el color");
-
-        for (int tries = 0; tries < MAXATTEMPTS; tries++) {
-
-            tryTheUserDoes = scanner.nextLine();
-
-            if (tryTheUserDoes.equals(favoriteColor)) {
-                System.out.println("¡Lo adivinaste!");
-                break;
-
-            } else {
-                System.out.println("Vuelve a intentarlo");
-            }
-            scanner.close();
-        }
-    }
+        NumberReader reader = (count) -> 
+        { 
+            Scanner scanner = new Scanner(System.in); 
+            return IntStream.range(0, count) .map(i -> { System.out.println("Enter number " + (i + 1) + ":"); 
+            return scanner.nextInt(); }).toArray(); }; 
+        
+        NumberProcessor processor = (numbers) -> IntStream.of(numbers).average().orElse(Double.NaN); 
+        
+        NumberPrinter printer = (average) -> { System.out.println("The average is: " + average); 
+                                              String message = average > 70? "The average is above 70." : "The average is 70 or below."; 
+                                              System.out.println(message); 
+                                             }; 
+        
+        int[] numbers = reader.readNumbers(10); double average = processor.processNumbers(numbers); 
+        printer.printNumber(average); 
+    } 
 }
-
-// pedir al usuario su color favorito
-// otro usuario adivine el color
-// tiene 3 intento
