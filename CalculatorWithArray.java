@@ -7,7 +7,7 @@ import java.util.Scanner;
 // calcular el promedio de los numeros
 // usar una condicional para mostrar mensajes si el promedio es mayor  a 70.
 
-class AverageCalculator {
+class CalculatorWithArray {
 
     public static void main(String[] args) {
 
