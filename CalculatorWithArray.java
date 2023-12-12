@@ -46,15 +46,34 @@ class CalculatorWithArray {
 }
 
 
-int[][] unaMatriz = {
+int[][] laOficina = {
     {0,0,0,0},
+    {0,2,2,4}
+    {0,1,2,3}
     {0,1,2,3}
 }
 
-    private static void imprimeMatriz(int[][] unaMatriz){
+    imprimeMundo(laOficina);
 
-        for(int fila = 0; i < unaMatriz; i++)
-            for(int columna = 0; j < unaMatriz[i].leght; j++){
-                 System.out.println(unaMatriz[fila][columna])
+    private static void imprimeMundo(int[][] Mundo){
+        cleanScreen();
+        for(int fila = 0; fila < laOficina; fila++)
+            for(int columna = 0; columna < mundo[fila].leght; columna++){
+                 System.out.println(traduce(muestraCasilla[fila][columna]))
             }
+        System.out.println();
     }
+
+  private static String traduce(int i){
+        if(i==1) = "++";
+        if(i==2) = "---";
+        if(i==3) = "$$";
+
+        return"  ";
+    } 
+
+  private static String muestraCasilla(int casilla){
+        String[] casillas = {"**","//","00"};
+        return casillas [casilla];
+    } 
+
