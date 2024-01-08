@@ -1,41 +1,86 @@
-//max,min,promedio y el numero medio  
-//escribe los numeros
-//while loop para entrar constante 
-//array de 100 numeros , o no 
+//Primero va solicitar un numero
+//luego va a preguntar si desea continuar(con un while loop)
+//Si desea continuar se va almacenar en un array hasta que pare 
+//Si no desea continuar se va a imprimir el array
+//luego va a imprimir el maximo, minimo, promedio y el numero medio
+//La condicion es que el usuario puede ingresar 100 numeros o menos si no para
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class statiticsCalulator {
     public static void main(String[] args) {
 
-        int sum = 0;
-        int max = 0;
-        int min = 0;
-        int average = 0;
-
         Scanner scanner = new Scanner(System.in);
 
-        int[] listOfNumbers = new int[0];
-        
-        while (listOfNumbers.length < 100) {
+        int[] listOfNumbers = new int[100];// capacidad de almacenamiento de los numeros
+        int countNumberHaveInArray = 0;
+
+        while (countNumberHaveInArray < 100) {
+
             System.out.println("Ingrese un número: ");
             int number = scanner.nextInt();
-            
-            for (int i = 0; i < listOfNumbers.length; i++) {
-                listOfNumbers[i] = number;
+
+            listOfNumbers[countNumberHaveInArray] = number;
+            countNumberHaveInArray++;
+
+            System.out.println("Deseas continuar? -1(Si), -2(No): ");
+            int checkIfUserWantToContinue = scanner.nextInt();
+
+            if (checkIfUserWantToContinue == -2) {
+                System.out.println("Lista de números ingresados: ");
+
+                for (int i = 0; i < countNumberHaveInArray; i++) {
+                    System.out.print(listOfNumbers[i] + "\n");
+
+                }
+
+                System.out.println("el numero maximo es: " + calculateMaxOfListOfNumbers(listOfNumbers));
+                System.out.println("el numero minimo es: " + calculateMinOfListOfNumbers(listOfNumbers));
+                System.out.println("el numero promedio es: " + calculateAverageOfListOfNumbers(listOfNumbers));
+
             }
+        }
 
-            System.out.println("Deseas continuar? 0(Si), 1(No): ");
-            int checkIfUserContinue = scanner.nextInt();
+    }
 
-            if (checkIfUserContinue == 0) {
-                System.out.println("Ingrese un número: ");
-                int addNewNumber = scanner.nextInt();
+    private static int calculateMaxOfListOfNumbers(int[] listOfNumbers) {
 
-            } else if (checkIfUserContinue == 1) {
-                System.out.println(listOfNumbers);
+        int maxNumber = listOfNumbers[0];
+
+        for (int i = 1; i < listOfNumbers.length; i++) {
+            if (listOfNumbers[i] > maxNumber) {
+                maxNumber = listOfNumbers[i];
             }
 
         }
+        return maxNumber;
     }
+
+    private static int calculateMinOfListOfNumbers(int[] listOfNumbers) {
+            int minNumber = listOfNumbers[0];
+            for (int i = 1; i < listOfNumbers.length; i++) {
+                if (listOfNumbers[i] < minNumber) {
+                    minNumber = listOfNumbers[i];
+                }
+            }
+            return minNumber;
+        }
+
+        private static int calculateAverageOfListOfNumbers(int[] listOfNumbers) {
+
+        int sumOfNumber = 0;
+
+        for (int i = 0; i < listOfNumbers.length; i++) {
+            sumOfNumber += listOfNumbers[i];
+
+        }
+
+        return sumOfNumber / listOfNumbers.length;
+    }
+
+    private static void cleanScreen() {
+        System.out.print("\033[H\033[2J");
+    }
+
 }
