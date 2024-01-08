@@ -35,48 +35,26 @@ public class statiticsCalulator {
 
                 }
 
-                System.out.println("el numero maximo es: " + calculateMaxOfListOfNumbers(listOfNumbers));
-                System.out.println("el numero minimo es: " + calculateMinOfListOfNumbers(listOfNumbers));
-                System.out.println("el numero promedio es: " + calculateAverageOfListOfNumbers(listOfNumbers));
+                int maxNumber = listOfNumbers[0];
+                int minNumber = listOfNumbers[0];
+                int sum = 0;
 
-            }
-        }
-
-    }
-
-    private static int calculateMaxOfListOfNumbers(int[] listOfNumbers) {
-
-        int maxNumber = listOfNumbers[0];
-
-        for (int i = 1; i < listOfNumbers.length; i++) {
-            if (listOfNumbers[i] > maxNumber) {
-                maxNumber = listOfNumbers[i];
-            }
-
-        }
-        return maxNumber;
-    }
-
-    private static int calculateMinOfListOfNumbers(int[] listOfNumbers) {
-            int minNumber = listOfNumbers[0];
-            for (int i = 1; i < listOfNumbers.length; i++) {
-                if (listOfNumbers[i] < minNumber) {
-                    minNumber = listOfNumbers[i];
+                for (int i = 0; i < countNumberHaveInArray; i++) {
+                    if (listOfNumbers[i] > maxNumber) {
+                        maxNumber = listOfNumbers[i];
+                    }
+                    if (listOfNumbers[i] < minNumber) {
+                        minNumber = listOfNumbers[i];
+                    }
+                    sum += listOfNumbers[i];
                 }
+
+                System.out.println("el numero maximo es: " + maxNumber);
+                System.out.println("el numero minimo es: " + minNumber);
+
             }
-            return minNumber;
         }
 
-        private static int calculateAverageOfListOfNumbers(int[] listOfNumbers) {
-
-        int sumOfNumber = 0;
-
-        for (int i = 0; i < listOfNumbers.length; i++) {
-            sumOfNumber += listOfNumbers[i];
-
-        }
-
-        return sumOfNumber / listOfNumbers.length;
     }
 
     private static void cleanScreen() {
