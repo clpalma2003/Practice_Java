@@ -38,6 +38,7 @@ public class statiticsCalulator {
                 int maxNumber = listOfNumbers[0];
                 int minNumber = listOfNumbers[0];
                 int sum = 0;
+                int average = 0;
 
                 for (int i = 0; i < countNumberHaveInArray; i++) {
                     if (listOfNumbers[i] > maxNumber) {
@@ -47,15 +48,30 @@ public class statiticsCalulator {
                         minNumber = listOfNumbers[i];
                     }
                     sum += listOfNumbers[i];
+
+                    average = sum / countNumberHaveInArray;
+                }
+
+                double median;
+
+                if (countNumberHaveInArray % 2 == 0) {
+                    int middleNumber1 = listOfNumbers[(countNumberHaveInArray - 1) / 2];
+                    int middleNumber2 = listOfNumbers[countNumberHaveInArray / 2];
+                    median = (double) (middleNumber1 + middleNumber2) / 2;
+                } else {
+                    median = listOfNumbers[countNumberHaveInArray / 2];
                 }
 
                 System.out.println("el numero maximo es: " + maxNumber);
                 System.out.println("el numero minimo es: " + minNumber);
+                System.out.println("el promedio es: " + average);
+                System.out.println("el numero medio es: " + median);
 
             }
         }
 
     }
+
 
     private static void cleanScreen() {
         System.out.print("\033[H\033[2J");
