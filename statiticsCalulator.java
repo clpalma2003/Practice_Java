@@ -32,7 +32,6 @@ public class statiticsCalulator {
 
                 for (int i = 0; i < countNumberHaveInArray; i++) {
                     System.out.print(listOfNumbers[i] + "\n");
-
                 }
 
                 int maxNumber = listOfNumbers[0];
@@ -72,9 +71,5 @@ public class statiticsCalulator {
 
     }
 
-
-    private static void cleanScreen() {
-        System.out.print("\033[H\033[2J");
-    }
 
 }
