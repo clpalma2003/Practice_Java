@@ -1,4 +1,4 @@
-package Practice_Java;
+package Practice_Java.RetosMansias;
 import java.util.Scanner;
 
 class Pacman {
